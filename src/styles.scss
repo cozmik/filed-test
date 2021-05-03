@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@use "src/assets/style/variables" as v;
+
+:host {
+  font-size: 14px;
+}
+
+body, html{
+  overflow-x: hidden;
+}
+body, html, article, section, footer, h1, h2, h3, h4, h5, form{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.highlight{
+  color: v.$accent-color;
+}
+
+.secondary-highlight{
+  color: v.$primary-color;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

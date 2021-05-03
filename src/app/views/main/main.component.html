@@ -1,0 +1,188 @@
+<article>
+  <nav>
+    <a href="#" class="logo"><img src="../../../assets/images/logo@2x.png"></a>
+  </nav>
+  <div class="onboard section">
+    <div>
+      <h2>
+        Book a demo today and <br> get two weeks for
+        <span class="highlight">free. </span>Why?
+      </h2>
+      <span>Because Our AI-Powered Software Will Exceed Your Marketing Goals.</span>
+
+      <div class="art-board">
+        <span></span>
+        <span></span>
+        <span></span>
+        <img src="../../../assets/images/Artboard@2x.png">
+      </div>
+    </div>
+
+    <div class="form-container">
+      <form [formGroup]="firstForm" *ngIf="!next">
+        <h4>Fill out the form and we'll get in touch soon.</h4>
+        <h2>Let's Start </h2>
+        <div class="instructions">Fill out the form and we'll get in touch to get your trial set up.</div>
+
+        <div>
+          <span class="label">Do you want to make ads that convert?</span>
+          <mat-radio-group color="primary" formControlName="convertedAds">
+            <mat-radio-button value="yes">Yes</mat-radio-button>
+            <mat-radio-button value="no">No</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div>
+          <span class="label">What's your monthly ad budget?</span>
+          <mat-form-field appearance="outline" style="width: 100%">
+            <mat-label>Select</mat-label>
+            <mat-select formControlName="budget">
+              <mat-option [value]="100">
+                {{100}}
+              </mat-option>
+              <mat-option value="200">
+                {{200}}
+              </mat-option>
+              <mat-option value="500">
+                {{500}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <button (click)="next = true">get started</button>
+      </form>
+
+      <form [formGroup]="secondForm" *ngIf="next">
+        <h4>Fill out details.</h4>
+
+        <h2>We’ll be in touch to get your trial set up.</h2>
+        <span class="instructions">Fill Out Form</span>
+
+        <div class="flex">
+          <div style="width: 100%">
+            <mat-form-field required="true" color="primary" appearance="outline">
+              <mat-label>First Name<sup>*</sup></mat-label>
+              <input formControlName="firstName" matInput value="" type="text">
+            </mat-form-field>
+            <div class="error"
+                 *ngIf="getField('firstName').invalid && (getField('firstName').dirty || getField('firstName').touched)">
+              <div *ngIf="getField('firstName').errors.required">
+                First name is required.
+              </div>
+            </div>
+          </div>
+
+          <div style="width: 100%">
+            <mat-form-field color="primary" appearance="outline">
+              <mat-label>Last Name <sup>*</sup></mat-label>
+              <input matInput value="" type="text" formControlName="lastName">
+            </mat-form-field>
+            <div
+              *ngIf="getField('lastName').invalid && (getField('lastName').dirty || getField('lastName').touched)">
+              <div *ngIf="getField('lastName').errors.required">
+                Last name is required.
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="flex">
+          <mat-form-field appearance="outline" color="primary">
+            <mat-label>Work Email<sup>*</sup></mat-label>
+            <input matInput value="" formControlName="email" type="email">
+          </mat-form-field>
+          <div class="error"
+               *ngIf="getField('email').invalid && (getField('email').dirty || getField('email').touched)">
+            <div *ngIf="getField('email').errors.required">
+              Email is required.
+            </div>
+            <div *ngIf="getField('email').errors.email">
+              Enter a valid email.
+            </div>
+          </div>
+        </div>
+
+        <div class="flex">
+          <mat-form-field appearance="outline" color="primary" style="width: 100%">
+            <mat-label>Monthly Advertising Budget<sup>*</sup></mat-label>
+            <mat-select formControlName="budget">
+              <mat-option value="100">
+                {{100}}
+              </mat-option>
+              <mat-option value="200">
+                {{200}}
+              </mat-option>
+              <mat-option value="500">
+                {{500}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="special">
+          <div class="flex">
+          <mat-form-field appearance="outline" color="primary" style="width: 100%">
+            <mat-label>Romania (Roman)</mat-label>
+            <mat-select [(ngModel)]="code" [ngModelOptions]="{standalone: true}">
+              <mat-option [value]="'+40'">
+                Romania (Roman)
+              </mat-option>
+              <mat-option [value]="'+234'">
+                Nigeria
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Number</mat-label>
+            <span matPrefix style="font-size: 12px; font-weight: 300; display: inline-block; margin-right: 5px">{{code}}</span>
+            <input required type="tel" matInput formControlName="phone">
+          </mat-form-field>
+          </div>
+
+          <div class="error" style="bottom: -18px"
+               *ngIf="getField('phone').invalid && (getField('phone').dirty || getField('phone').touched)">
+            <div *ngIf="getField('phone').errors.required">
+              Phone number is required.
+            </div>
+          </div>
+        </div>
+
+        <button [disabled]="secondForm.invalid || submitting" (click)="submitUser()"><span>get free trial</span>
+          <fa-icon *ngIf="submitting" style="position: absolute; display: inline-block; margin-left: 6px; margin-top: 4px;"
+                   [icon]="spinner" [spin]="true"></fa-icon> </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="section brag">
+    <div>Our Offer: Intelligent Automation. Real-time Insights. Unparalleled Results.</div>
+  </div>
+  <div class="section benefit">
+    <h3>The <span class="secondary-highlight">Benefits</span> of using Filed</h3>
+
+    <ul>
+      <li>
+        <span>
+        Ability to scale using Dexter, our AI-powered marketing genius.
+          </span>
+      </li>
+      <li>
+        <span>
+        Client Success Manager who will optimize your Facebook ad campaigns and focus on driving the best possible
+        results for you.
+        </span>
+      </li>
+      <li>
+        <span>
+        This is a limited time offer only.
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div class="section testimonials">
+    <app-testimonial *ngFor="let testimonial of testimonials | async" [testimonial]="testimonial"></app-testimonial>
+  </div>
+</article>

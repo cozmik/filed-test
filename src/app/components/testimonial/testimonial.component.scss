@@ -1,0 +1,73 @@
+article{
+  display: grid;
+  color: white;
+  align-items: center;
+  font-size: 16px;
+
+
+  grid-template-columns: 90px 1fr 1fr;
+  grid-template-areas: 'quote topic topic'
+  'text text text'
+  'profile info info';
+  gap: 20px;
+
+  &::before{
+    grid-area: quote;
+    content: url('../../../assets/images/quote.svg');
+  }
+
+  h3{
+    grid-area: topic;
+    font-size: 20px;
+    font-weight: 500;
+
+    &:before{
+      content: '"';
+    }
+    &:after{
+      content: '"';
+    }
+  }
+
+  p{
+    grid-area: text;
+    display: inline-block;
+    margin: 0;
+    line-height: 26px;
+    &:before{
+      content: '"';
+      display: inline-block;
+      margin-right: -4px;
+    }
+    &:after{
+      content: '"';
+      display: inline-block;
+      margin-left: -4px;
+
+    }
+  }
+
+  div{
+    grid-area: info;
+
+    h4{
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    span{
+      font-style: italic;
+      display: block;
+      font-weight: 300;
+    }
+  }
+
+  img{
+    grid-area: profile;
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    image-rendering: -webkit-optimize-contrast
+  }
+}

@@ -1,0 +1,18 @@
+<article>
+
+  <div>
+    <button [routerLink]="''"><fa-icon class="highlight" [icon]="back"></fa-icon> </button>
+    <h2 class="secondary-highlight">Users</h2>
+  </div>
+
+  <div class="main">
+    <ul>
+      <li *ngFor="let user of users | async">
+        <div class="big highlight">{{user.firstName}} {{user.lastName}}</div>
+        <div>{{user.email}}</div>
+        <div>{{user.budget}}</div>
+        <div>{{user.phoneNumber}}</div>
+      </li>
+    </ul>
+  </div>
+</article>
